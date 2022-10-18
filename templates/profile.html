@@ -1,0 +1,353 @@
+
+
+{% extends 'main/base.html'%}
+{% block content%} 
+{% load static %}   
+    <style>
+        .profile-head {
+    transform: translateY(5rem)
+}
+
+.cover {
+    
+    background-size: cover;
+    background-repeat: no-repeat
+}
+
+
+
+.card {
+  background-color: dodgerblue;
+  color: white;
+  padding: 1rem;
+  height: 4rem;
+}
+
+.cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 1rem;
+}
+
+/* Screen larger than 600px? 2 column */
+@media (min-width: 600px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Screen larger than 900px? 3 columns */
+@media (min-width: 900px) {
+  .cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+    </style>
+
+
+    
+    <div > 
+        <div class="col-md-10 mx-auto"> 
+            <!-- Profile widget --> 
+             {%if user.is_approved%}
+            <div class="bg-white shadow rounded overflow-hidden">
+                 <div class="px-4 pt-0 pb-4 cover"> <div class="media align-items-end profile-head"> 
+                    
+                    <div class="profile mr-3">
+                        
+                       {% if x.pubprofile%}
+                        <img src="{{x.pubprofile.url}}" alt="..." style=" background:black; width: 200px; height: 150px; object-fit: contain;"class="rounded mb-2 img-thumbnail">
+                       {%endif%}
+                       
+                    </div> 
+                    <div class="media-body mb-5 text-white">
+                             <h4 class="mt-0 mb-5">{{x.name}}</h4> 
+                             <a href="{% url 'proupdate'%} ">Edit profile</a> 
+                            <p class="small mb-0">
+                               
+                            </p> </div> </div> </div>
+                             <div class="bg-light p-4 py-5 d-flex justify-content-end text-center">
+                                  
+                                
+                                <ul class="list-inline mb-0"> 
+                                    <li class="list-inline-item"> 
+                                        <h5 class="font-weight-bold mb-0 d-block"></h5>
+                                        <small class="text-muted"> 
+                                            {% if x.is_bronze %}
+                                            <i class="fa fa-trophy" style="font-size:30px;color:#CD7F32"></i>
+                                              {% else %}
+                                                <!-- <p style="color:red;">Private</p>         -->
+                                            {% endif %}
+                                    </li> 
+                                    <li class="list-inline-item"> <h5 class="font-weight-bold mb-0 d-block"></h5>
+                                       <small class="text-muted">
+                                        {% if x.is_silver %}
+                                        <i class="fa fa-trophy" style="font-size:30px;color:#C0C0C0"></i>
+                                        {% else %}
+                                             <!-- <p style="color:red;">Private</p>         -->
+                                      {% endif %}
+                                    </li>
+                                    <li class="list-inline-item"> 
+                                        <h5 class="font-weight-bold mb-0 d-block"></h5>
+                                        <small class="text-muted"> 
+                                            {% if x.is_gold %}
+                                            <i class="fa fa-trophy" style="font-size:30px;color:#f7bf06"></i>
+                                            {% else %}
+                                                 <!-- <p style="color:red;">Private</p>         -->
+                                          {% endif %}
+                                    </li> 
+                                </ul> 
+                                <!-- batch aword -->
+                                <ul class="list-inline mb-0 px-4"> 
+                                    <li class="list-inline-item"> 
+                                        <h5 class="font-weight-bold mb-0 d-block">{{x.total_views}}</h5>
+                                        <small class="text-muted" style="font-size: 15px;"> 
+                                        <i class="fa fa-eye" aria-hidden="true"></i>Views</small> 
+                                    </li> 
+                            
+                                    
+                                </ul> 
+                            </div> <div class="px-4 py-3"> 
+                                <p class="row col-md-4" style="color: blue; font-size: 15px;">
+                                   <div class="cards">
+                                        
+                                        </div>
+                                {% if x.is_approved %}
+                                    {% if x.is_artscrafts %}
+                                      <a href="{% url 'artc' %}">#Arts Crafts</a>
+                                    {%endif%}
+                                    {% if x.is_fastival %}
+                                      <a href="{% url 'festival' %}">#Festival</a>
+                                    {%endif%}
+                                    {% if x.is_celebrations %}
+                                       <a href="{% url 'cel' %}">#Celebrations</a>
+                                    {%endif%} 
+                                     {% if x.is_historical%}
+                                       <a href="{% url 'histo' %}">#Historical Monuments</a>
+                                    {%endif%} 
+                                     {% if x.is_museums %}
+                                       <a href="{% url 'muse' %}">#Museum</a>
+                                    {%endif%} 
+                                    {% if x.is_libraries %}
+                                       <a href="{% url 'labri' %}">#Library</a>
+                                    {%endif%}
+                                    {% if x.is_archives %}
+                                       <a href="{% url 'achi' %}">#Archive</a>
+                                    {%endif%}
+                                    
+                                    {% if x.is_painting %}
+                                       <a href="{% url 'paint' %}">#Painting</a>
+                                    {%endif%}
+                                    
+                                    {% if x.is_digital %}
+                                       <a href="{% url 'digi' %}">#Digital Art</a>
+                                    {%endif%}
+                                    {% if x.is_photography %}
+                                       <a href="{% url 'photo' %}">#Photography</a>
+                                    {%endif%}
+                                     {% if x.is_sculpture %}
+                                       <a href="{% url 'scul' %}">#Sculpture</a>
+                                    {%endif%}
+                                    {% if x.is_pottery %}
+                                       <a href="{% url 'pott' %}">#Pottery</a>
+                                    {%endif%}
+                                    {% if x.is_livemusic %}
+                                       <a href="{% url 'liv' %}">#Music</a>
+                                    {%endif%}
+                                    {% if x.is_theater %}
+                                       <a href="{% url 'thea' %}">#Theater</a>
+                                    {%endif%}
+                                    {% if x.is_dance %}
+                                       <a href="{% url 'dan' %}">#Dance</a>
+                                    {%endif%}
+                                    {% if x.is_opera %}
+                                       <a href="{% url 'ope' %}">#Opera</a>
+                                    {%endif%}
+                                    {% if x.is_puppetry %}
+                                       <a href="{% url 'pup' %}">#Puppetry</a>
+                                    {%endif%}
+                                   
+                                    {% if x.is_book %}
+                                       <a href="{% url 'book' %}">#Book</a>
+                                    {%endif%}
+                                    {% if x.is_magazines %}
+                                       <a href="{% url 'maga' %}">#Magazines</a>
+                                    {%endif%}
+                                    {% if x.is_comics %}
+                                       <a href="{% url 'com' %}">#Comic</a>
+                                    {%endif%}
+                                    {% if x.is_film %}
+                                       <a href="{% url 'fil' %}">#Film</a>
+                                    {%endif%}
+                                    {% if x.is_television %}
+                                       <a href="{% url 'tele' %}">#Television</a>
+                                    {%endif%}
+                                    {% if x.is_radio %}
+                                       <a href="{% url 'rad' %}">#Radio</a>
+                                    {%endif%}
+                                    {% if x.is_musicvideo %}
+                                       <a href="{% url 'musv' %}">#Music Video</a>
+                                    {%endif%}
+                                    {% if x.is_digitalcontent %}
+                                       <a href="{% url 'digicon' %}">#Digitized Content</a>
+                                    {%endif%}
+                                    {% if x.is_software %}
+                                       <a href="{% url 'soft' %}">#Software</a>
+                                    {%endif%}
+                                    {% if x.is_videogames %}
+                                       <a href="{% url 'videogame' %}">#Video game</a>
+                                    {%endif%}
+                                    {% if x.is_animations %}
+                                       <a href="{% url 'anima' %}">#Animation</a>
+                                    {%endif%}
+                                    
+                                    {% if x.is_fashion %}
+                                       <a href="{% url 'fas' %}">#Fashion</a>
+                                    {%endif%}
+                                    {% if x.is_jewellery %}
+                                       <a href="{% url 'jewe' %}">#Jewellery</a>
+                                    {%endif%}
+                                    {% if x.is_toys %}
+                                       <a href="{% url 'toy' %}">#Toys</a>
+                                    {%endif%}
+                                    {% if x.is_interiordesign %}
+                                       <a href="{% url 'inte' %}">#Interior Design</a>
+                                    {%endif%}
+                                    {% if x.is_graphics %}
+                                       <a href="{% url 'graph' %}">#Graphic Design</a>
+                                    {%endif%}
+                                    {% if x.is_architecture %}
+                                       <a href="{% url 'arch' %}">#Architecture</a>
+                                    {%endif%}
+                                    {% if x.is_advertising %}
+                                       <a href="{% url 'adver' %}">#Advertising</a>
+                                    {%endif%}
+                                     
+                                    {% if x.is_creativerd %}
+                                       <a href="{% url 'creative' %}">#Creative R&D</a>
+                                    {%endif%}
+                                    {% if x.is_creativeeventservices %}
+                                       <a href="{% url 'ser' %}">#Creative event services</a>
+                                    {%endif%}
+                                    {% if x.is_digitalservices %}
+                                       <a href="{% url 'digicreative' %}">#Digital services</a>
+                                    {%endif%}
+                                      
+    
+                                {%endif%}
+                                </p>
+                                <h5 class="mb-0">Personal Information</h5> <div class="p-4 rounded shadow-sm bg-light">
+                                    <div class="row col-md-4">
+                                        <p style="font-size: 15px; color:black; text-align: justify;">{{x.bio}}</p>  
+                                    </div> 
+                                    <div class="row col-md-4">
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <label style="font-size: 15px; ">Account:</label>
+                                        </div>
+                                        <div class="col-md-1">
+                                          {% if x.is_showed %}
+                                          <p style="font-size: 15px;">{{x.profile_type}}</p>
+                                            {% else %}
+                                              <p style="color:red; font-size: 15px;">Private</p>        
+                                          {% endif %}
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <label style="font-size: 15px; ">Gender:</label>
+                                        </div>
+                                        <div class="col-md-1">
+                                          {% if x.is_shows %}
+                                          <p style="font-size: 15px;">{{x.gender}}</p>
+                                            {% else %}
+                                              <p style="color:red; font-size: 15px;">Private</p>        
+                                          {% endif %}
+                                        </div>
+                                    </div>
+
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <label style="font-size: 15px; ">Email:</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                      {% if x.is_show_mail %}
+                                      <p style="font-size: 15px;">{{x.mail}}</p>
+                                        {% else %}
+                                          <p style="color:red; font-size: 15px;">Private</p>        
+                                      {% endif %}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <label style="font-size: 15px;">Phone:</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                      {% if x.is_show %}
+                                      <p style="font-size: 15px;">+975{{x.phone}}<p>
+                                      {% else %}
+                                           <p style="color:red; font-size: 15px;">Private</p>        
+                                    {% endif %}
+                                    </div>
+                                </div>
+                              
+                                   <a href="{{x.facebook}}" class="fab fa-facebook-f" style="font-size: 20px; color:  #3B5998;  padding: 10px;"></a>
+                                   <a href="{{x.youtube}} " class="fab fa-youtube" class="fab fa-facebook-f" style="font-size: 20px; color:  #bb0000;  padding: 10px;"></a>
+                                   <a href="{{x.instagram}}" class="fab fa-instagram" class="fab fa-facebook-f" style="font-size: 20px; color:  radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);  padding: 10px;"></a> 
+                               
+                              </div>
+                           
+                                         </div> </div> 
+                                         <div class="py-4 px-4"> 
+                                            <div class="d-flex align-items-center justify-content-between mb-3"> 
+                                                <h5 class="mb-0">Portfolio </h5>
+                                                <a href="#" class="btn btn-link text-muted">Show all</a>
+                                             </div> 
+                                            
+                                             <div class="row">
+                                                 {% for con in user_posts %}
+                                                  <div class="col-lg-6 mb-2 pr-lg-1">
+                                                 {% if con.image%}
+                                                   <img src="{{con.image.url}}" alt="" class="img-fluid rounded shadow-sm" style=" background:black; width: 500px; max-height: 300px; object-fit: contain;">
+                                                   
+                                                 {%endif%}
+                                             
+                                                <p style="font-size: 15px; color:black; text-align: justify;">{{con.description}}</p>
+                                                  
+                                                
+                                                       <form action="{% url 'postupdate' pk=con.id%}" method="get">
+                                                <input type="hidden" name="x-id" value="{{con.id}}">
+                                                <button type="submit" class="btn btn-primary" style="background-color: white; color: gray;"><span>
+                                                   Edit
+                                                   
+                                             
+                                                </span></button>
+                                                <a style="font-size: 15px; " href="{% url 'delete' pk=con.id%}"> <span>
+                                                   delete
+                                             
+                                                </span></a>
+                                              </form>
+                                                
+                                            </div> 
+                                             
+                                             {% endfor %} 
+                                            
+                                            </div> 
+                                           
+                                         </div> 
+
+                                         
+                     
+                                    {%endif%}
+
+
+{%endblock%}
+
+
+
+
+
+
+

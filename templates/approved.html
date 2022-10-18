@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+
+    
+  .title-section {
+    max-width: 450px;
+    color: #2D2B3A;
+    font-weight: 600;
+  }
+  
+  .title-section .marked {
+    position: relative;
+    color: #e40e7f;
+  }
+  
+  .title-section .marked::before {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: #d3ccff;
+    z-index: -1;
+  }
+  
+  .text-center .title-section {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  </style>
+</head>
+<body>
+   
+
+<nav class="navbar navbar-inverse visible-xs">
+     {% for message in messages %}
+          <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endfor %}
+	 
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <!-- <a class="navbar-brand" href="#">Logo</a> -->
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="{% url 'index'%}">Home</a></li>
+        
+        
+         {% if pro %}
+                <li><a href="{% url 'profile'%}">View Profile</a></li>           
+           {%else%}
+                <li><a href="{% url 'editpro'%}">Create Profile</a></li>   
+           {%endif%}
+               
+         posts
+        
+        <!--{% if user.profile %}-->
+        <!--   <li><a href="{% url 'profile'%}">Viwe Profile</a></li>-->
+        <!--{%else%}-->
+        <!--   <li><a href="{% url 'editpro'%}">Create Profile</a></li>-->
+        <!--{%endif%}-->
+        
+        <li><a href="{% url 'portfolio'%}">Portfolio</a></li>
+        <li><a href="{% url 'event'%}">Create Event</a></li>
+        <li><a href="{% url 'artist'%}">View All</a></li> 
+        <li><a href="{% url 'logout'%}">logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs">
+      <!-- <h2>Logo</h2> -->
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#section1">Dashboard</a></li>
+        <li><a href="{% url 'index'%}">Home</a></li>
+      
+
+           {% if pro %}
+                <li><a href="{% url 'profile'%}">View Profile</a></li>           
+           {%else%}
+                <li><a href="{% url 'editpro'%}">Create Profile</a></li>   
+           {%endif%}
+        
+        <li><a href="{% url 'portfolio'%}">Portfolio</a></li>
+        <li><a href="{% url 'event'%}">Create Event</a></li>
+        <li><a href="{% url 'artist'%}">View All</a></li>
+        <li><a href="{% url 'logout'%}">Logout</a></li>
+      </ul><br>
+    </div>
+    <br>
+    
+    <div class="col-sm-9">
+      <div class="well">
+        <h4>Dashboard</h4>
+        {% if pro.pubprofile %}
+                               
+          <img style="width: 40px; height: 40px; border-radius: 50%;"src="{{pro.pubprofile.url}}" alt="post-title" />
+         {% endif %}
+        
+        <p style="font-size: 20px; font-family: Verdana;"> Welcome {{user.first_name}} </p> 
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+            <h4 class="title-section">The<span class="marked">&nbsp;Heritage</span> </h4>
+            <!--<p><li> {% if user.is_heriages %}  -->
+            <!--    <a href="{% url 'heriages'%}">Heritage Dashboard</a><br>            -->
+            <!--    {% else %}-->
+            <!--      <a href="{% url 'heriages'%}" style="color:rgb(0, 0, 0);">Create Dashboard Heriages </a><br>                         -->
+            <!--    {% endif %}</li></p> -->
+
+                <p><li> {% if user.is_artscrafts %}  
+                  <a href="{% url 'artspost'%}">Arts Crafts Dashboard</a><br>            
+                  {% else %}
+                    <a href="{% url 'artsauth'%}" style="color:rgb(0, 0, 0);">Create Dashboard Arts Crafts  </a><br>                         
+                  {% endif %}</li></p>
+                <p><li> {% if user.is_festival %}  
+                    <a href="{% url 'festivalpost'%}">festival Dashboard</a><br>            
+                    {% else %}
+                      <a href="{% url 'festivalauth'%}" style="color:rgb(0, 0, 0);">Create Dashboard festival  </a><br>                         
+                    {% endif %}</li></p> 
+                <p><li> {% if user.is_festival %}  
+                      <a href="{% url 'celepost'%}">celebrations Dashboard</a><br>            
+                      {% else %}
+                        <a href="{% url 'celepost'%}" style="color:rgb(0, 0, 0);">Create Dashboard celebrations  </a><br>                         
+                      {% endif %}</li></p>
+
+                <p><li> {% if user.is_historical %}  
+                        <a href="{% url 'histopost'%}">historical Dashboard</a><br>            
+                        {% else %}
+                          <a href="{% url 'histopost'%}" style="color:rgb(0, 0, 0);">Create Dashboard historical  </a><br>                         
+                        {% endif %}</li></p>
+                <p><li> {% if user.is_museums %}  
+                          <a href="{% url 'celepost'%}">Museums Dashboard</a><br>            
+                          {% else %}
+                            <a href="{% url 'celepost'%}" style="color:rgb(0, 0, 0);">Create Dashboard Museums  </a><br>                         
+                          {% endif %}</li></p>
+                <p><li> {% if user.is_libraries %}  
+                            <a href="{% url 'labpost'%}">libraries Dashboard</a><br>            
+                            {% else %}
+                              <a href="{% url 'labpost'%}" style="color:rgb(0, 0, 0);">Create Dashboard libraries  </a><br>                         
+                            {% endif %}</li></p>
+                <p><li> {% if user.is_archives %}  
+                              <a href="{% url 'archspost'%}">Archives Dashboard</a><br>            
+                              {% else %}
+                                <a href="{% url 'archpost'%}" style="color:rgb(0, 0, 0);">Create Dashboard archives  </a><br>                         
+                              {% endif %}</li></p>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <h4 class="title-section">The<span class="marked">&nbsp;Arts</span> </h4>
+            <!--<p><li> {% if user.is_arts %}  -->
+            <!--    <a href="{% url 'arts'%}">Arts Dashboard</a><br>          -->
+            <!--    {% else %}    -->
+            <!--      <a href="{% url 'arts'%}" style="color:rgb(0, 0, 0);">Create Arts Dashboard</a><br>                    -->
+            <!--    {% endif %}-->
+            <!--  </li></p>-->
+
+              <p><li> {% if user.is_painting %}  
+                <a href="{% url 'paintpost'%}">Painting Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'paintpost'%}" style="color:rgb(0, 0, 0);">Create Painting Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_digital %}  
+                <a href="{% url 'digitalpost'%}">Digital Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'digitalpost'%}" style="color:rgb(0, 0, 0);">Create Digital Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_photography %}  
+                <a href="{% url 'photopost'%}">Photography Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'photopost'%}" style="color:rgb(0, 0, 0);">Create Photography Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_sculpture %}  
+                <a href="{% url 'sculpost'%}">Sculpture Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'sculpost'%}" style="color:rgb(0, 0, 0);">Create SculptureDashboard</a><br>                    
+                {% endif %}
+              </li></p>
+
+              <p><li> {% if user.is_pottery %}  
+                <a href="{% url 'potpost'%}">Pottery Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'potpost'%}" style="color:rgb(0, 0, 0);">Create Pottery Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+
+              <p><li> {% if user.is_livemusic %}  
+                <a href="{% url 'livepost'%}">live music Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'livepost'%}" style="color:rgb(0, 0, 0);">Create live music Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_theater %}  
+                <a href="{% url 'thepost'%}">Theater Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'thepost'%}" style="color:rgb(0, 0, 0);">Create Theater Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_dance %}  
+                <a href="{% url 'dancepost'%}">Dance Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'dancepost'%}" style="color:rgb(0, 0, 0);">Create dance Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_opera %}  
+                <a href="{% url 'oppost'%}">Opera Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'oppost'%}" style="color:rgb(0, 0, 0);">Create opera Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_puppetry %}  
+                <a href="{% url 'puppost'%}">Puppetry Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'puppost'%}" style="color:rgb(0, 0, 0);">Create Puppetry Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <h4 class="title-section">The<span class="marked">&nbsp;Media</span> </h4>
+            <!--<p><li> {% if user.is_media %}   -->
+            <!--    <a href="{% url 'media'%}">Media Dashboard</a><br>            -->
+            <!--   {% else %}-->
+            <!--    <a href="{% url 'media'%}" style="color:rgb(0, 0, 0);">Create Media Dashboard</a><br>                           -->
+            <!--   {% endif %}</p> -->
+               <p><li> {% if user.is_book %}  
+                <a href="{% url 'bookpost'%}">Book Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'bookpost'%}" style="color:rgb(0, 0, 0);">Create Book Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_magazines %}  
+                <a href="{% url 'magapost'%}">Magazines Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'magapost'%}" style="color:rgb(0, 0, 0);">Create Magazines Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_comics %}  
+                <a href="{% url 'compost'%}">Comics Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'compost'%}" style="color:rgb(0, 0, 0);">Create Comics Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_film %}  
+                <a href="{% url 'filpost'%}">Film Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'filpost'%}" style="color:rgb(0, 0, 0);">Create Film Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_television %}  
+                <a href="{% url 'telepost'%}">Television Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'telepost'%}" style="color:rgb(0, 0, 0);">Create Television Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_radio %}  
+                <a href="{% url 'radpost'%}">Radio Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'radpost'%}" style="color:rgb(0, 0, 0);">Create Radio Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_musicvideo %}  
+                <a href="{% url 'mvpost'%}">Music video Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'mvpost'%}" style="color:rgb(0, 0, 0);">Create Music video Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_digitalcontent %}  
+                <a href="{% url 'dcpost'%}">Digital content Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'dcpost'%}" style="color:rgb(0, 0, 0);">Create Digital content Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_software %}  
+                <a href="{% url 'softpost'%}">Software Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'softpost'%}" style="color:rgb(0, 0, 0);">Create software Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li> {% if user.is_videogames %}  
+                <a href="{% url 'vgpost'%}">Video games Dashboard</a><br>          
+                {% else %}    
+                  <a href="{% url 'vgpost'%}" style="color:rgb(12, 12, 12);">Create Video games Dashboard</a><br>                    
+                {% endif %}
+              </li></p>
+              <p><li>  {% if user.is_animations %}   
+                <a href="{% url 'anpost'%}">Functional animation Dashboard</a><br>            
+                {% else %}
+                 <a href="{% url 'anpost'%}" style="color:rgb(0, 0, 0);">Create animation Dashboard</a><br>                          
+               {% endif %}
+              </p>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <h4 class="title-section">The<span class="marked">&nbsp;Functional Creation</span> </h4>
+            <!--<p><li>  {% if user.is_creation %}   -->
+            <!--    <a href="{% url 'creation'%}">Functional Creation Dashboard</a><br>            -->
+            <!--    {% else %}-->
+            <!--     <a href="{% url 'creation'%}" style="color:rgb(0, 0, 0);">Create Functional Creation Dashboard</a><br>                          -->
+            <!--    {% endif %}-->
+            <!--</p> -->
+            <p><li>  {% if user.is_fashion %}   
+              <a href="{% url 'fepost'%}">Fashoin Dashboard</a><br>            
+              {% else %}
+               <a href="{% url 'fepost'%}" style="color:rgb(0, 0, 0);">Create Fashoin Creation Dashboard</a><br>                          
+              {% endif %}
+            </p> 
+           
+            <p><li>  {% if user.is_jewellery %}   
+              <a href="{% url 'jewpost'%}">Jewellery Dashboard</a><br>            
+              {% else %}
+               <a href="{% url 'jewpost'%}" style="color:rgb(0, 0, 0);">Create jewellery Creation Dashboard</a><br>                          
+              {% endif %}
+            </p> 
+            <p><li>  {% if user.is_toys %}   
+              <a href="{% url 'toypost'%}">Toys Dashboard</a><br>            
+              {% else %}
+               <a href="{% url 'toypost'%}" style="color:rgb(0, 0, 0);">Create Toys Creation Dashboard</a><br>                          
+              {% endif %}
+            </p>
+            <p><li>  {% if user.is_interiordesign %}   
+              <a href="{% url 'setpost'%}">Interior Design Dashboard</a><br>            
+              {% else %}
+               <a href="{% url 'setpost'%}" style="color:rgb(0, 0, 0);">Create Interior Design Dashboard</a><br>                          
+              {% endif %}
+            </p>
+            <p><li>  {% if user.is_graphics %}   
+              <a href="{% url 'grapost'%}">Graphic Dashboard</a><br>            
+              {% else %}
+               <a href="{% url 'grapost'%}" style="color:rgb(0, 0, 0);">Create Graphic Dashboard</a><br>                          
+              {% endif %}
+            </p>
+            <p><li>  {% if user.is_architecture %}   
+              <a href="{% url 'archpost'%}">Architecture Dashboard</a><br>            
+              {% else %}
+               <a href="{% url 'archpost'%}" style="color:rgb(0, 0, 0);">Create Architecture Dashboard</a><br>                          
+              {% endif %}
+            </p>
+            <p><li>  {% if user.is_advertising %}   
+              <a href="{% url 'adpost'%}">Advertising Dashboard</a><br>            
+              {% else %}
+               <a href="{% url 'adpost'%}" style="color:rgb(0, 0, 0);">Create Advertising Dashboard</a><br>                          
+              {% endif %}
+            </p>
+            <p><li>  {% if user.is_creativerd %}   
+              <a href="{% url 'crdpost'%}">Creative R&D Dashboard</a><br>            
+              {% else %}
+               <a href="{% url 'crdpost'%}" style="color:rgb(0, 0, 0);">Create Creative R&D Dashboard</a><br>                          
+              {% endif %}
+            </p>
+            <p><li>  {% if user.is_creativeeventservices %}   
+              <a href="{% url 'cespost'%}">Creative event services Dashboard</a><br>            
+              {% else %}
+               <a href="{% url 'cespost'%}" style="color:rgb(0, 0, 0);">Create Creative event services Dashboard</a><br>                          
+              {% endif %}
+            </p>
+            <p><li>  {% if user.is_digitalservices %}   
+              <a href="{% url 'digpost'%}">Creative digital services Dashboard</a><br>            
+              {% else %}
+               <a href="{% url 'digpost'%}" style="color:rgb(0, 0, 0);">Create digital services Dashboard</a><br>                          
+              {% endif %}
+            </p>
+          
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-sm-4">
+          <div class="well">
+            <p>Text</p> 
+            <p>Text</p> 
+            <p>Text</p> 
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <p>Text</p> 
+            <p>Text</p> 
+            <p>Text</p> 
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <p>Text</p> 
+            <p>Text</p> 
+            <p>Text</p> 
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="row">
+        <div class="col-sm-8">
+          <div class="well">
+            <p>Text</p> 
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <p>Text</p> 
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+

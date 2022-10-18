@@ -1,0 +1,129 @@
+
+
+{% extends 'main/base.html'%}
+{% block content%} 
+{% load static %} 
+    
+
+
+<div class="spacer" data-height="50"></div>
+
+<div class="container-xl">
+<div class="padding-30 rounded bordered">
+
+    <div class="row">
+        {% for x in user %}
+        <div class="col-md-12 col-sm-6">
+            <!-- post -->
+            <div class="post post-list clearfix">
+                <div class="thumb rounded">
+                    <!--<span class="post-format-sm">-->
+                    <!--    <i class="icon-picture"></i>-->
+                    <!--</span>-->
+                    <a href="blog-single.html">
+                        <div class="inner">
+                                 
+                            {% if x.pubprofile %}
+                             <form action="{% url 'artistdetil' pk=x.id%}" method="get">
+                                                <input type="hidden" name="x-id" value="{{x.id}}">
+                                                <button type="submit" class="btn btn-primary" style="background-color: white; color: gray;"><span>
+                                                   {% if x.pubprofile %}
+                                                   
+                                                <img style="background: black; width: 200px; height: 200px; object-fit: contain;" src="{{x.pubprofile.url}}" alt="post-title" />
+                                                {% endif %}
+                                                
+                                                </span></button>
+                                              </form>
+                               
+                            <!--<img style="background: black; width: 200px; height: 200px; object-fit: contain;" src="{{x.pubprofile.url}}" alt="post-title" />-->
+                            {% endif %}
+                            
+                        </div>
+                        
+                    </a>
+                </div>
+                <div class="details">
+                    <ul class="meta list-inline mb-3">
+                        <li class="list-inline-item"><a href="#">
+                            
+                            {% if x.pubprofile %}
+                                <form action="{% url 'artistdetil' pk=x.id%}" method="get">
+                                                <input type="hidden" name="x-id" value="{{x.id}}">
+                                                <button type="submit" class="btn btn-primary" style="background-color: white; color: gray;"><span>
+                                                   {% if x.pubprofile %}
+                                                   
+                                                <img style=" background: black; width: 40px; height: 40px; border-radius:50%; object-fit: contain;"src="{{x.pubprofile.url}}" alt="post-title" />
+                                                {% endif %}
+                                                {{number.name}}
+                                                </span></button>
+                                              </form>
+                               
+                            
+                            {% endif %}
+                            {{x.name}}</a></li>
+                        
+                        <!--<li class="list-inline-item">{{x.date_joined}}</li>-->
+                        <li class="list-inline-item">View : <span>{{x.total_views}}</span></li>
+                       
+                    </ul>
+                    <ul class="list-inline mb-0"> 
+                        <li class="list-inline-item"> 
+                            <h5 class="font-weight-bold mb-0 d-block"></h5>
+                            <small class="text-muted"> 
+                               
+                                {% if x.is_bronze %}
+                                <i class="fa fa-trophy" style="font-size:30px;color:#CD7F32"></i>
+                                  {% else %}
+                                    <!-- <p style="color:red;">Private</p>         -->
+                                {% endif %}
+                        </li> 
+                        <li class="list-inline-item"> <h5 class="font-weight-bold mb-0 d-block"></h5>
+                           <small class="text-muted">
+                            {% if x.is_silver %}
+                            <i class="fa fa-trophy" style="font-size:30px;color:#C0C0C0"></i>
+                            {% else %}
+                                 <!-- <p style="color:red;">Private</p>         -->
+                          {% endif %}
+                        </li>
+                       
+                        <li class="list-inline-item"> 
+                            <h5 class="font-weight-bold mb-0 d-block"></h5>
+                            <small class="text-muted"> 
+                                {% if x.is_gold %}
+                                <i class="fa fa-trophy" style="font-size:30px;color:#D7BE69"></i>
+                                {% else %}
+                                     <!-- <p style="color:red;">Private</p>         -->
+                              {% endif %}
+                        </li> 
+                    </ul> 
+                    
+                    <p class="excerpt mb-0" style="color: #000; background-color: white;">{{x.bio}}</p>
+                    <div class="post-bottom clearfix d-flex align-items-center">
+                        <div class="social-share me-auto">
+                            <button class="toggle-button icon-share"></button>
+                            <ul class="icons list-unstyled list-inline mb-0">
+                                <li class="list-inline-item"><a href="{{arts_list.facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li class="list-inline-item"><a href="{{arts_list.youtube}}"><i class="fab fa-youtube"></i></a></li>
+                                <li class="list-inline-item"><a href="{{arts_list.instagram}}"><i class="fab fa-instagram"></i></a></li>
+                                
+                            </ul>
+                        </div>
+                        <div class="more-button float-end">
+                            
+                           <form action="{% url 'artistdetil' pk=x.id%}" method="get">
+                            <input type="hidden" name="x-id" value="{{x.id}}">
+                            <button type="submit" class="btn btn-primary" style="background-color: white; color: black;"><span class="icon-options"></span></button>
+                          </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+   
+</body>
+{%endblock%}

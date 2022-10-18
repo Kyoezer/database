@@ -1,0 +1,80 @@
+
+{% extends 'main/base.html'%}
+{% block content%} 
+{% load static %} 
+<style>
+
+.card {
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  height: auto;
+}
+
+.cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 1rem;
+}
+
+/* Screen larger than 600px? 2 column */
+@media (min-width: 600px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Screen larger than 900px? 3 columns */
+@media (min-width: 900px) {
+  .cards { grid-template-columns: repeat(3, 1fr); }
+}
+    </style>
+
+ <div class="col-md-10 mx-auto"> 
+            <div class="bg-white shadow rounded overflow-hidden">
+                 <div class="px-4 pt-0 pb-4 cover"> <div class="media align-items-end profile-head"> 
+                    <div class="profile mr-3">
+                         <div class="cards">
+        <div class="card">
+            <img src="{{event_list.image_event.url}}" style=" background: black; object-fit: contain;" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+        </div>
+        <div class="card">
+             <h4 class="title-section" style="color:white;">About {{event_list.title}}</h4>
+        <div class="divider"></div>
+    
+      
+      <p class="w3-large">{{event_list.dis}} </p>
+      <p style="font-size:12px;"> {{event_list.create_date}}</p>
+        </div>
+        <div class="card">
+              <h4 style="color:white;">Contact</h4><br>
+   
+    
+        <h5 class="w3-left"> {% if event_list.is_show_mail %}
+        
+                   <a href="mailto:{{event_list.mail}}"><i class="fas fa-envelope" style="color:white;">: {{event_list.mail}}</i></a><br>
+             {% else %}
+                   <i class="fas fa-envelope" style="color:white;">: Private</i><br>      
+             {% endif %} 
+             {% if event_list.is_show %}
+                <a href="tel://{{event_list.phone}}"><i class="fas fa-phone" style="color:white;">: {{event_list.phone}}</i></a>
+            {% else %}
+                 <i class="fas fa-phone" style="color:white;">: Private</i>        
+            {% endif %} </h5>
+            	<div class="text-center">
+							<a href="{% url 'contact_view' event_list.id%}"><button class="btn btn-simple" style="background-color:#e40e7f; color: white;">CONTACT</button></a>
+				</div>
+            
+        
+  </div>
+  
+        </div>
+        
+      </div>
+     </div>
+    </div>
+   </div>
+</div>
+
+
+
+{%endblock%}

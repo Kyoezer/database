@@ -1,0 +1,156 @@
+
+{% extends 'main/base.html'%}
+{% block content%} 
+{% load static %} 
+<style>
+ .card {
+  background-color: ghostwhite;
+  color: black;
+  padding: 1rem;
+  /*height: 4rem;*/
+}
+
+.cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  /*max-height:1200px;*/
+  display: grid;
+  grid-gap: 1rem;
+}
+
+/* Screen larger than 600px? 2 column */
+@media (min-width: 600px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  
+  .imag{
+     background:black; width: 300px; height: 300px; object-fit: contain;
+    
+}
+  
+   
+}
+@media (max-width: 600px) {
+  .cards { 
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 0rem;
+      margin: 0 ;
+      display: grid;
+      
+  }
+   .card {
+  background-color: ghostwhite;
+  color: black;
+  padding: 5px;
+  /*height: 4rem;*/
+}
+.imag{
+     
+     background:black;
+     width: 100px; 
+     height: 100px; 
+     object-fit: contain;
+}
+.view1{
+    font-size: 10px;
+    text-align: center;
+}
+.name1{
+    font-size: 10px;
+    text-align: center;
+    padding:0;
+    color: black;
+    /*white-space: nowrap;*/
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    /*max-width: 12ch;*/
+}
+.buttonfor{
+    
+    padding:none;
+    text-align: center;
+    color:red;
+    
+}
+.botom{
+    background:transparent;
+    border: none;
+    padding:none;
+    margin-top:-100px;
+}
+}
+
+/* Screen larger than 900px? 3 columns */
+@media (min-width: 900px) {
+  .cards { grid-template-columns: repeat(3, 1fr); }
+  .imag{
+     background:black; width: 300px; height: 300px; object-fit: contain;
+    
+}
+.buttonfor{
+    
+    padding:none;
+    text-align: center;
+    color:red;
+}
+.botom{
+    background:transparent;
+    border: none;
+    padding:none;
+    margin-top:-100px;
+}
+.view1{
+    font-size: 15px;
+    text-align: center;
+}
+ 
+}
+
+</style>
+
+
+<div > 
+        <div class="col-md-10 mx-auto"> 
+            <!-- Profile widget --> 
+            <div class="bg-white shadow rounded overflow-hidden">
+                
+                                    <div class="py-2 px-4"> 
+                                        <h5>Comic</h5>
+                                                <div class="cards">                 
+                                                {% for x in service %} 
+                                                 {% if x.is_comics%}
+                                                   <div class="card">
+                                                        <form action="{% url 'artistdetil' pk=x.id%}" method="get">
+                                                          <input type="hidden" name="x-id" value="{{x.id}}">
+                                                          <button type="submit" style="border: None; background: transparent; ">
+                                                              {% if x.pubprofile%}
+                                                                  <img src="{{x.pubprofile.url}}" alt="..." class="imag">
+                                                               {%endif%}
+                                                          </button>
+                                                         </form>
+                                                   
+                                                     <p class="view1">{{x.total_views}} views</p>
+                                                  <div  class="buttonfor">
+                                                      <form action="{% url 'artistdetil' pk=x.id%}" method="get">
+                                                          <input type="hidden" name="x-id" value="{{x.id}}">
+                                                          <button type="submit" class="botom"><span class="name1">{{x.name}}</span></button>
+                                                         </form>
+                                                    </div>
+        
+                                                 </div>
+                                                 {%endif%}
+                                                {%endfor%}
+                                              </div>
+                              
+                                          
+                                       </div> 
+
+                                        </div> 
+                                    </div> 
+                                </div>
+                           
+
+                          
+
+             
+{%endblock%}
+

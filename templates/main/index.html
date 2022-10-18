@@ -1,0 +1,794 @@
+{% extends 'main/base.html'%}
+{% block content%} 
+{% load static %}   
+ 
+	<div id="hero">
+
+		<div class="container-xl">
+
+			<div class="row gy-4">
+
+				<div class="col-lg-8">
+					
+					<!-- featured post large -->
+					<div class="post featured-post-lg">
+					
+                        
+    <style>
+    
+        section:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1e5799; /* Old browsers */
+            background: -moz-linear-gradient(top,  #f9322f 10%, #1e5799 2%,  #ea28fc 58%, #7db9e8 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top,  #f9322f 10%, #1e5799 2%, 10%,#ea28fc 58%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom,  #f9322f 10%, #1e5799 2%, 10%,#ea28fc 58%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9322f', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+    
+            background: linear-gradient(to right, #f91212 10%, #2f9ef9 26%, #ea28fc 58%, #7db9e8 100% );
+            mix-blend-mode: color;
+            pointer-events: none;
+        }
+        video{
+            object-fit: cover;
+            width: 100%;
+            height: 90vh;
+            
+        }
+        h1{
+           margin: 0; 
+           padding: 0;
+           position: absolute;
+           top:50%;
+           transform: translateY(-50%);
+           width: 100%;
+           text-align: center;
+           font-size: 3em;
+           background-color: transparent;
+           font-family: sans-serif;
+           letter-spacing: 0.001em;
+           /* opacity: 0; */
+        }
+    
+        h1 span{
+            opacity: 0;
+            display: inline-block;
+            animation: animate 1s linear forwards;
+        }
+      
+        @keyframes animate 
+        {
+            0%
+            {
+                opacity: 0;
+                transform: rotateY(90deg);
+                filter:blur(10px);
+            }
+            100%
+            {
+                opacity: 1;
+                transform: rotateY(0deg);
+                filter:blur(0);
+            }
+        }
+    
+        h1 span:nth-child(1)
+          {
+            animation-delay: 1s;
+          }
+          
+        h1 span:nth-child(2)
+          {
+            animation-delay: 1.5s;
+          }
+        h1 span:nth-child(3)
+          {
+            animation-delay: 2s;
+          }
+        h1 span:nth-child(4)
+          {
+            animation-delay: 2.5s;
+          }
+        h1 span:nth-child(5)
+          {
+            animation-delay: 3s;
+          }
+        h1 span:nth-child(6)
+          {
+            animation-delay: 3.5s;
+          }
+        h1 span:nth-child(7)
+          {
+            animation-delay: 4s;
+          }
+        h1 span:nth-child(8)
+          {
+            animation-delay: 4.5s;
+          }
+        h1 span:nth-child(9)
+          {
+            animation-delay: 5s;
+          }
+        h1 span:nth-child(10)
+          {
+            animation-delay: 5.5s;
+          }
+        h1 span:nth-child(11)
+          {
+            animation-delay: 6s;
+          }
+        h1 span:nth-child(12)
+          {
+            animation-delay: 6.5s;
+          }
+        h1 span:nth-child(13)
+          {
+            animation-delay: 7s;
+          }
+        h1 span:nth-child(14)
+          {
+            animation-delay: 7.5s;
+          }
+        h1 span:nth-child(15)
+          {
+            animation-delay: 8s;
+          }
+    
+        
+    
+    
+        .fonttext{
+           width: 100%;
+           color: white;
+          }
+    
+          @media (max-width: 600px) {
+            .fonttext{
+            width: 100%;
+           
+          }
+           .ani{
+             font-size: 30px;
+           }
+           
+           
+           section:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: #1e5799; /* Old browsers */
+            background: -moz-linear-gradient(top,  #f9322f 10%, #1e5799 2%,  #ea28fc 58%, #7db9e8 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top,  #f9322f 10%, #1e5799 2%, 10%,#ea28fc 58%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom,  #f9322f 10%, #1e5799 2%, 10%,#ea28fc 58%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9322f', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+    
+            background: linear-gradient(to right, #f91212 10%, #2f9ef9 26%, #ea28fc 58%, #7db9e8 100% );
+            mix-blend-mode: color;
+            pointer-events: none;
+        }
+        video{
+            object-fit: cover;
+            width: 100%;
+            height: 50vh;
+            
+        }
+        
+        }
+        
+        
+        
+        .marked{
+            color: #e40e7f;
+        }
+        
+        .col-lg-4{
+            background: white;
+            color: black;
+        }
+        .nav-item{
+            color:black;
+        }
+        .main-content{
+            background-color: white;
+            color: black;
+        }
+        .col-lg-8{
+             background: white;
+             color: black;
+        }
+        .shortinfo{
+            animation: 4s anim-lineUp ;
+        }
+        @keyframes anim-lineUp {
+        0% {
+         opacity: 0;
+         transform: translateY(80%);
+        }
+        20% {
+        opacity: 0;
+       }
+       50% {
+        opacity: 3;
+        transform: translateY(0%);
+      }
+       100% {
+    opacity: 4;
+    transform: translateY(0%);
+  }
+}
+       
+        </style>      
+						
+                            
+							<div>
+                               
+								<div class="inner" >
+                                    <section>
+                                         {% for x in banner %}
+                                         <video class="col-md-6 col-lg-12 py-3 " autoplay muted loop>
+										{% if x.binner %}
+										<source src="{{x.binner.url}}"  type="video/mp4" >      
+											
+										 {% endif %}
+                                        
+                                        </video>
+										{% endfor %}
+                                        
+                                        <!-- <video class="col-md-6 col-lg-12 py-3 " autoplay muted loop>-->
+                                        <!--<source src="{% static 'images/smoke.mp4' %}"  type="video/mp4" >-->
+                                        <!--</video>-->
+                                     
+                                        <h1 class="fonttext">
+                                            
+                                            <span class="ani">C</span>
+                                            <span class="ani">R</span>
+                                            <span class="ani">E</span>
+                                            <span class="ani">A</span>
+                                            <span class="ani">T</span>
+                                            <span class="ani">I</span>
+                                            <span class="ani">V</span>
+                                            <span class="ani">E</span>&nbsp 
+                                            <span class="ani">B</span>
+                                            <span class="ani">H</span>
+                                            <span class="ani">U</span>
+                                            <span class="ani">T</span>
+                                            <span class="ani">A</span>
+                                            <span class="ani">N</span>
+                                            
+                                            <p style="font-size: 2vw; " class="shortinfo">A Comprehensive Database of Artists in Bhutan</p>
+                                        </h1>
+                                        
+                                      </section>
+                                      
+                               
+                                </div>
+                            
+							</div>
+                    
+					</div>
+
+				</div>
+
+				<div class="col-lg-4">
+
+					<!-- post tabs -->
+					<div class="post-tabs rounded bordered">
+						<!-- tab navs -->
+						<ul class="nav nav-tabs nav-pills nav-fill" id="postsTab" role="tablist">
+							<li class="nav-item" role="presentation"><button aria-controls="popular" aria-selected="true" class="nav-link active" data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button" > Events</button></li>
+							<!--<li class="nav-item" role="presentation"><button aria-controls="recent" aria-selected="false" class="nav-link" data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Posts</button></li>-->
+						</ul>
+						<!-- tab contents -->
+						<div class="tab-content" id="postsTabContent">
+							<!-- loader -->
+							<div class="lds-dual-ring"></div>
+							<!-- popular posts -->
+							<div aria-labelledby="popular-tab" class="tab-pane fade show active" id="popular" role="tabpanel">
+								<!-- post -->
+                                {% for event in event %}
+								<div class="post post-list-sm circle">
+                                    
+									<div class="thumb ">
+										<a href="{% url 'showevent'%}">
+											<div class="inner">
+                                                {% if event.image_event %}
+                                                   
+                                                   <img style="width: 100px; height:55px; border-radius: 50%;"src="{{event.image_event.url}}" alt="post-title" />
+                                                {% endif %}
+												
+											</div>
+										</a>
+									</div>
+                                    
+									<div class="details clearfix">
+										<h6 class="post-title my-0"><a href="{% url 'showevent'%}">{{ event.title }}</a></h6>
+										<ul class="meta list-inline mt-1 mb-0">
+											<li class="list-inline-item">Date: {{event.start_date}} - {{event.end_date}}</li>
+										</ul>
+									</div>
+                                    
+								</div>
+                {% endfor %}
+								
+							</div>
+							<!-- recent posts -->
+							<div aria-labelledby="recent-tab" class="tab-pane fade" id="recent" role="tabpanel">
+								<!-- heriage_top -->
+                       
+        <!--      {% for event in event %}-->
+								<!--<div class="post post-list-sm circle">-->
+                                    
+								<!--	<div class="thumb ">-->
+								<!--		<a href="{% url 'showevent'%}">-->
+								<!--			<div class="inner">-->
+        <!--                  {% if event.image_event %}-->
+                                                   
+        <!--                   <img style="width: 100px; height:55px; border-radius: 50%;" src="{{event.image_event.url}}" alt="post-title" />-->
+        <!--                 {% endif %}-->
+												
+								<!--			</div>-->
+								<!--		</a>-->
+								<!--	</div>-->
+                                    
+								<!--	<div class="details clearfix">-->
+								<!--		<h6 class="post-title my-0"><a href="{% url 'showevent'%}">{{ event.title }}</a></h6>-->
+								<!--		<ul class="meta list-inline mt-1 mb-0">-->
+								<!--			<li class="list-inline-item">{{event.start_date}} - {{event.end_date}}</li>-->
+								<!--		</ul>-->
+								<!--	</div>-->
+                                    
+								<!--</div>-->
+        <!--         {% endfor %}-->
+                
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- section main content -->
+	<div class="main-content">
+		<div class="container-xl">
+
+			<div  class="row gy-4">
+
+				<div class="col-lg-8">
+
+					<!-- section header -->
+					<div class="section-header">
+                        
+						<h5 class="section-title"><span style="font-size: 20px;" ></span><span style="font-size: 20px;" class="marked">&nbsp; Events</span></h5>
+						<img src="{% static 'images/wave.svg' %}" class="wave" alt="wave" />
+					</div>
+
+					<div class="padding-30 rounded bordered">
+						<div class="row gy-5">
+							<div class="col-sm-6">
+								<!-- post -->
+                                {% for event in events %}
+								<div class="post">
+									<div class="thumb rounded">
+                                    
+										<a href="{% url 'showevent'%}" class="category-badge position-absolute">Details</a>
+										<!--<span class="post-format">-->
+										<!--	<i class="icon-picture"></i>-->
+										<!--</span>-->
+										<a href="{% url 'showevent'%}">
+											<div class="inner">
+                                                {% if event.image_event %}
+                                                   
+                                                <img style="background: black; width: 280px; height: 280px; object-fit: contain;" src="{{event.image_event.url}}" alt="post-title" />
+                                                {% endif %}
+												
+											</div>
+										</a>
+									</div>
+									
+									<ul class="meta list-inline mt-4 mb-0">
+										<li class="list-inline-item"><a href="#">
+                                        <h5 style="color: black;" class="post-title mb-3 mt-3"><a href="{% url 'showevent'%}"> <span style="color: black; font-weight: bold;">{{event.title}}</span></a></h5>
+										<li class="list-inline-item"><span style="color: black;">Date: {{event.start_date}} - {{event.end_date}}</span></li>
+									</ul>
+									
+									<p style="color: black;" class="excerpt mb-0">{{event.discription}}</p>
+								</div>
+                                {% endfor %}
+							</div>
+							<div class="col-sm-6">
+								<!-- post -->
+                                {% for event in event %}
+								<div class="post post-list-sm square">
+									<div class="thumb rounded">
+										<a href="{% url 'showevent'%}">
+											<div class="inner">
+												{% if event.image_event %}
+                                                   
+                                                <img style=" background: black; width: 100px; height: 100px; object-fit: contain;" src="{{event.image_event.url}}" alt="post-title" />
+                                                {% endif %}
+											</div>
+										</a>
+									</div>
+									<div class="details clearfix">
+										<h6 class="post-title my-0"><a href="{% url 'showevent'%}"><span style="color: black;">{{event.title}}</span></a></h6>
+										<ul class="meta list-inline mt-1 mb-0">
+											<li class="list-inline-item"><span style="color: black;">Date: {{event.start_date}} - {{event.end_date}}</span></li>
+										</ul>
+									</div>
+								</div>
+                                {% endfor %}
+								<!-- post -->
+							
+							</div>
+						</div>
+					</div>
+
+					<div class="spacer" data-height="50"></div>
+					<h5 class="section-title"><span style="font-size: 20px;" >Statistics</span><span style="font-size: 20px;" class="marked">&nbsp;</span></h5>
+					<img src="{% static 'images/wave.svg' %}" class="wave" alt="wave" />
+
+					<div class="padding-30 rounded bordered">
+					    
+
+                        <div class="row" style="align-items: center; ">
+                            
+                            
+                            <div class="col-sm-3 ">
+                              
+                                <h6 class="title-section " style="text-align: center; color: #000;"><span style="font-size:15px;">&nbsp;Heritages</span> </h6>
+                                <h3 style="text-align: center; color: #000; "><span class="count">{{ heriage }}</span></h3> 
+                                <hr>
+                              
+                            </div>
+                            <div class="col-sm-3">
+                              
+                                   
+                                <h6 class="title-section"  style="text-align: center; color: #000; "><span style="font-size:15px;">&nbsp;Arts</span> </h6>
+                                <h3 style="text-align: center; color: #000;"><span class="count">{{ arts}}</span></h3>
+                                <hr>
+                                
+                              
+                            </div>
+                            <div class="col-sm-3">
+                              
+                                    
+                                <h6 class="title-section"  style="text-align: center; color: #000; "><span style="font-size:15px;" >&nbsp;Media</span> </h6>
+                                <h3 style="text-align: center; color: #000;"><span class="count">{{ media }}</span></h3>
+                                <hr>
+                                
+                              
+                            </div>
+                            <div class="col-sm-3">
+                                  
+                                <h6 class="title-section"  style="text-align: center; color: #000;"><span style="font-size:15px;">&nbsp;Funtional Creation</span> </h6>
+                                <h3  style="text-align: center; color: #000;"><span class="count">{{ creation }}</span></h3>
+                                <hr>
+                                
+                             
+                            </div>
+                          </div> 
+
+
+
+						<div class="row gy-5">
+							
+
+							<div class="col-sm-6">
+								<!-- post large -->
+								<div class="post">
+									<div class="thumb rounded">
+										
+									</div>
+								
+								</div>
+                                <!-- post large -->
+								<div class="post">
+									<div class="thumb rounded">
+										
+									</div>
+								
+								</div>
+						
+							</div>
+						</div>
+					</div>
+
+					<div class="spacer" data-height="50"></div>
+
+					<!-- section header -->
+					<div class="section-header">
+						<h5 class="section-title"><span style="font-size: 20px;">Recent registered artists</span></h5>
+                            <img src="{% static 'images/wave.svg' %}" class="wave" alt="wave" />
+					</div>
+
+					<div class="padding-30 rounded bordered">
+
+						<div class="row">
+							{% for number in artprofile %}
+							<div class="col-md-12 col-sm-6">
+								<!-- post -->
+								<div class="post post-list clearfix">
+									<div class="thumb rounded">
+										<!--<span class="post-format-sm">-->
+										<!--	<i class="icon-picture"></i>-->
+										<!--</span>-->
+										<a href="blog-single.html">
+											<div class="inner">
+											    
+											          <form action="{% url 'artistdetil' pk=number.id%}" method="get">
+                                                <input type="hidden" name="x-id" value="{{number.id}}">
+                                                <button type="submit" class="btn btn-primary" style="background-color: white; color: gray;"><span>
+                                                   {% if number.pubprofile %}
+                                                   
+                                                <img style="background: black; width: 200px; height: 200px; object-fit: contain;" src="{{number.pubprofile.url}}" alt="post-title" />
+                                                {% endif %}
+                                                
+                                                </span></button>
+                                              </form>
+                                                
+												
+											</div>
+										</a>
+									</div>
+									<div class="details">
+										<ul class="meta list-inline mb-3">
+											<li class="list-inline-item">
+											    
+											          <form action="{% url 'artistdetil' pk=number.id%}" method="get">
+                                                <input type="hidden" name="x-id" value="{{number.id}}">
+                                                <button type="submit" class="btn btn-primary" style="background-color: white; color: gray;"><span>
+                                                   {% if number.pubprofile %}
+                                                   
+                                                <img style=" background: black; width: 40px; height: 40px; border-radius:50%; object-fit: contain;"src="{{number.pubprofile.url}}" alt="post-title" />
+                                                {% endif %}
+                                                {{number.name}}
+                                                </span></button>
+                                              </form>
+                                              
+                                            </li>
+											
+											<!--<li class="list-inline-item">{{number.date_joined}}</li>-->
+										</ul>
+										
+										<p class="excerpt mb-0" style="color: #000; background-color: white;">{{number.bio}}</p>
+										<div class="post-bottom clearfix d-flex align-items-center">
+											<div class="social-share me-auto">
+												<button class="toggle-button icon-share"></button>
+												<ul class="icons list-unstyled list-inline mb-0">
+													<li class="list-inline-item"><a href="{{arts_list.facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+													<li class="list-inline-item"><a href="{{arts_list.youtube}}"><i class="fab fa-youtube"></i></a></li>
+													<li class="list-inline-item"><a href="{{arts_list.instagram}}"><i class="fab fa-instagram"></i></a></li>
+                                                    
+												</ul>
+											</div>
+											<div class="more-button float-end">
+                                                
+                                               <form action="{% url 'artistdetil' pk=number.id%}" method="get">
+                                                <input type="hidden" name="x-id" value="{{number.id}}">
+                                                <button type="submit" class="btn btn-primary" style="background-color: white; color: black;"><span class="icon-options"></span></button>
+                                              </form>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                            {% endfor %}
+
+						</div>
+						
+						<!-- load more button -->
+						<div class="text-center">
+							<a href="{% url 'artist'%}"><button class="btn btn-simple">Load More</button></a>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="col-lg-4">
+
+					<!-- sidebar -->
+					<div class="sidebar">
+						<!-- widget about -->
+						<div class="widget rounded">
+							<div class="widget-about data-bg-image text-center" data-bg-image="images/map-bg.png">
+		
+                                {% for x in qo %}
+                                    <div>
+                                   <p style="font-size:18px; font-family: proxima nova; text-align: center; ">“{{x.quotes}}”</p>
+                                   <p style="font-size: 15px; text-align: center;">- {{x.author}}, {{x.address}}, {{x.year}}</p>
+                                   </div>
+                                 {%endfor%}
+								
+							
+							</div>
+						</div>
+                        
+                   
+						<!-- widget popular posts -->
+						<!--<div class="widget rounded">-->
+						<!--	<div class="widget-header text-center">-->
+						<!--		<h3 class="widget-title">Popular Posts</h3>-->
+						<!--		<img src="{% static 'images/wave.svg' %}" class="wave" alt="wave" />-->
+						<!--	</div>-->
+						<!--	<div class="widget-content">-->
+								<!-- post -->
+      <!--                          {% for post in  heriage_top %}-->
+						<!--		<div class="post post-list-sm circle">-->
+						<!--			<div class="thumb">-->
+						<!--				<span class="number">1</span>-->
+						<!--				<a href="{% url 'industries'%}">-->
+						<!--					<div class="inner">-->
+      <!--                                          {% if post.image %}-->
+      <!--                                           <img style="width: 100px; height: 60px;"  src="{{post.image.url}}" alt="image">-->
+      <!--                                          {% endif %}   -->
+												
+						<!--					</div>-->
+						<!--				</a>-->
+						<!--			</div>-->
+						<!--			<div class="details clearfix">-->
+						<!--				<h6 class="post-title my-0"><a href="{% url 'industries'%}">{{post.title }}</a></h6>-->
+						<!--				<ul class="meta list-inline mt-1 mb-0">-->
+						<!--					<li class="list-inline-item">{{post.create_date}}</li>-->
+						<!--				</ul>-->
+						<!--			</div>-->
+						<!--		</div>-->
+      <!--                          {%endfor%}-->
+								<!-- post -->
+      <!--                          {% for post in  artspost %}-->
+                        
+						<!--		<div class="post post-list-sm circle">-->
+						<!--			<div class="thumb ">-->
+						<!--				<span class="number">2</span>-->
+						<!--				<a href="{% url 'industries'%}">-->
+						<!--					<div class="inner">-->
+      <!--                                          {% if post.image %}-->
+      <!--                                          <img src="{{post.image.url}}" alt="image">-->
+      <!--                                         {% endif %}   -->
+                                               
+						<!--					</div>-->
+						<!--				</a>-->
+						<!--			</div>-->
+						<!--			<div class="details clearfix">-->
+						<!--				<h6 class="post-title my-0"><a href="{% url 'industries'%}">{{ post.title }}</a></h6>-->
+						<!--				<ul class="meta list-inline mt-1 mb-0">-->
+						<!--					<li class="list-inline-item">{{post.create_date}}</li>-->
+						<!--				</ul>-->
+						<!--			</div>-->
+						<!--		</div>-->
+                           
+      <!--                       {%endfor%}-->
+								<!-- post -->
+      <!--                          {% for post in  mediapost %}-->
+                         
+						<!--		<div class="post post-list-sm circle">-->
+						<!--			<div class="thumb">-->
+						<!--				<span class="number">3</span>-->
+						<!--				<a href="{% url 'industries'%}">-->
+						<!--					<div class="inner">-->
+      <!--                                         {% if post.image %}-->
+      <!--                                          <img src="{{post.image.url}}" alt="image">-->
+      <!--                                         {% endif %}   -->
+                                               
+						<!--					</div>-->
+						<!--				</a>-->
+						<!--			</div>-->
+						<!--			<div class="details clearfix">-->
+						<!--				<h6 class="post-title my-0"><a href="{% url 'industries'%}">{{ post.title }}</a></h6>-->
+						<!--				<ul class="meta list-inline mt-1 mb-0">-->
+						<!--					<li class="list-inline-item">{{post.create_date}}</li>-->
+						<!--				</ul>-->
+						<!--			</div>-->
+						<!--		</div>-->
+      <!--                          {%endfor%}-->
+
+                                <!-- post -->
+                                
+      <!--                         {% for post in  creationpost %}-->
+                         
+      <!--                         <div class="post post-list-sm circle">-->
+      <!--                          <div class="thumb">-->
+      <!--                              <span class="number">4</span>-->
+      <!--                              <a href="blog-single.html">-->
+      <!--                                  <div class="inner">-->
+      <!--                                     {% if post.image %}-->
+      <!--                                      <img src="{{post.image.url}}" alt="image">-->
+      <!--                                     {% endif %}   -->
+                                           
+      <!--                                  </div>-->
+      <!--                              </a>-->
+      <!--                          </div>-->
+      <!--                          <div class="details clearfix">-->
+      <!--                              <h6 class="post-title my-0"><a href="{% url 'industries'%}">{{ post.title }}</a></h6>-->
+      <!--                              <ul class="meta list-inline mt-1 mb-0">-->
+      <!--                                  <li class="list-inline-item">{{post.create_date}}</li>-->
+      <!--                              </ul>-->
+      <!--                          </div>-->
+      <!--                      </div>-->
+      <!--                         {%endfor%}-->
+						<!--	</div>		-->
+						<!--</div>-->
+
+						<!-- widget categories -->
+						<!--<div class="widget rounded">-->
+						<!--	<div class="widget-header text-center">-->
+						<!--		<h3 class="widget-title">Explore Topics</h3>-->
+						<!--		<img src="{% static 'images/wave.svg' %}" class="wave" alt="wave" />-->
+						<!--	</div>-->
+						<!--	<div class="widget-content">-->
+						<!--		<ul class="list">-->
+                                      
+						<!--			<li><a href="{%url 'artstype'%}">Heritages</a><span>(7)</span></li>-->
+						<!--			<li><a href="{%url 'artstype'%}">Arts</a><span>(10)</span></li>-->
+						<!--			<li><a href="{%url 'artstype'%}">Media</a><span>(11)</span></li>-->
+						<!--			<li><a href="{%url 'artstype'%}">Funtional Creation</a><span>(10)</span></li>-->
+									
+						<!--		</ul>-->
+						<!--	</div>-->
+							
+						<!--</div>-->
+
+						<!-- widget newsletter -->
+						<div class="widget rounded">
+							<div class="widget-header text-center">
+								<h3 class="widget-title">Newsletter</h3>
+								<img src="{% static 'images/wave.svg' %}" class="wave" alt="wave" />
+							</div>
+							<div class="widget-content">
+								<span class="newsletter-headline text-center mb-3">Join Us!</span>
+								<form>
+									<div class="mb-2">
+										<input class="form-control w-100 text-center" placeholder="Email address…" type="email">
+									</div>
+									<button class="btn btn-default btn-full" type="submit">Sign Up</button>
+								</form>
+								<span class="newsletter-privacy text-center mt-3">By signing up, you agree to our <a href="#">Privacy Policy</a></span>
+							</div>		
+						</div>
+                        
+				
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<script>
+  $(".count").each(function () {
+  $(this)
+    .prop("Counter", 0)
+    .animate(
+      {
+        Counter: $(this).text()
+      },
+      {
+        duration: 800,
+        easing: "swing",
+        step: function (now) {
+          $(this).text(Math.ceil(now));
+        }
+      }
+    );
+});
+
+
+</script>
+    <div class="spacer" data-height="50"></div>
+  
+{%endblock%}

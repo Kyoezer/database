@@ -1,0 +1,95 @@
+{% extends 'main/base.html'%}
+{% block content%} 
+{% load static %}
+
+
+<style>
+
+.card {
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  height: auto;
+}
+
+.cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 1rem;
+}
+
+/* Screen larger than 600px? 2 column */
+@media (min-width: 600px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .card {
+  background-color: black;
+  color: white;
+  padding: 0.3rem;
+  height: auto;
+}
+
+.cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 0.1rem;
+}
+.title-section{
+    font-size: 15px;
+    text-align:center;
+}
+.mb{
+    font-size: 10px;
+    text-align:center;
+}
+.image1{
+    width: 400px; 
+    height: auto;
+}
+
+}
+/* Screen larger than 900px? 3 columns */
+@media (min-width: 900px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+    </style>
+{% for number in event %}
+       {% if number.is_approved %}
+ <div class="col-md-10 mx-auto"> 
+            <div class="bg-white shadow rounded overflow-hidden">
+                 <div class="px-4 pt-0 pb-4 cover"> <div class="media align-items-end profile-head"> 
+                    <div class="profile mr-3">
+                                  <div class="cards">
+                                   <div class="card">
+                                       
+                                                {% if number.image_event %}
+                                                <img class="image1" style=" background: black;  object-fit: contain;" src="{{number.image_event.url}}" alt="image">
+                                           {% endif %}
+                                 </div>
+                                  <div class="card">
+                                       <h4 class="title-section" style="color:white;">{{number.title}}</h4>
+           
+            <p class="mb">{{number.start_date}} - {{number.end_date}}</p>
+            <a href="{% url 'eventdetil' number.pk%}" class="btn btn-primary" style="background-color:#e40e7f; color: white;">More Details</a>
+                                  </div>
+        
+                                  </div>
+     </div>
+    </div>
+   </div>
+</div>
+  
+    {% else %}
+              
+    {% endif %}
+   {% endfor %}
+    
+
+
+{%endblock%}
+
+

@@ -1,0 +1,434 @@
+{% extends 'main/base.html'%}
+{% block content%} 
+{% load static %} 
+
+      <style>
+        
+        /* Add padding to containers */
+        .container {
+          padding: 16px;
+          background-color: white;
+        }
+        
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+          width: 100%;
+          padding: 15px;
+          margin: 5px 0 22px 0;
+          display: inline-block;
+          border: none;
+          background: #f1f1f1;
+        }
+        
+        input[type=text]:focus, input[type=password]:focus {
+          background-color: #ddd;
+          outline: none;
+        }
+        
+        /* Overwrite default styles of hr */
+        hr {
+          border: 1px solid #f1f1f1;
+          margin-bottom: 25px;
+        }
+        
+        /* Set a style for the submit button */
+        .registerbtn {
+          background-color:  #E40E7F;
+          border-radius: 15px;
+          color: white;
+          padding: 16px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+          opacity: 0.9;
+        }
+        .registerbtn1 {
+            background-color: #3B5998;
+            border-radius: 15px;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+          }
+        .registerbtn2 {
+            background-color: #dd4b39;
+            border-radius: 15px;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+        
+        .registerbtn:hover {
+          opacity: 1;
+        }
+        
+        /* Add a blue text color to links */
+        a {
+          color: dodgerblue;
+        }
+        
+        /* Set a grey background color and center the text of the "sign in" section */
+        .signin {
+          background-color: #f1f1f1;
+          text-align: center;
+        }
+        .user1{
+          margin-right: 400px;
+        }
+        .user2{
+          margin-right: 290px;
+        }
+        .user3{
+          margin-right: 225px;
+        }
+
+        .main{
+          display: grid;
+          grid-template-areas:
+            'left right';
+          text-align: start;
+          padding-left:20px;
+        }
+        
+        </style>
+        </head>
+        <body> 
+  
+    <!--        {% for message in messages %}-->
+          
+         
+    <!--      <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">-->
+    <!--          {% if message %}-->
+    <!--            {{message}}-->
+    <!--        {% endif%}-->
+    <!--        <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+    <!--          <span aria-hidden="true">&times;</span>-->
+    <!--        </button>-->
+    <!--      </div>-->
+    <!--{% endfor %}-->
+          
+        <form method = "POST" action="{% url 'signup' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+          <div  class="col-md-4 mx-auto align-items-center" style="padding: 10px; text-align: justify;">
+            <h3>Sign Up</h3>
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p style="color: red;">{{ error }}</p>
+            {% endfor %}
+           {% endif %}
+
+           {% for hidden in form.hidden_fields %}
+             <p style="color: red;">{{ hidden }}</p>
+           {% endfor %}
+
+           {% for field in form %}
+          <p style="color: red;">{{ field.errors.as_ul }}</p>
+          {% endfor %}
+             <hr>
+             <label for="email"><b class="user1">FirstName</b></label>
+            <input  placeholder="First Name"  type="text" name="first_name" required>
+             <label for="email"><b class="user1">LastName</b></label>
+            <input  placeholder="Last Name"  type="text" name="last_name" required>
+            
+            <label for="email"><b class="user1">Email</b></label>
+            <input  placeholder="Enter Email"  type="text" name="email" required>
+            
+            
+            <label for="psw"><b class="user2">Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password1"  id="psw" required>
+            <p stsyle="font-size:8px">(*Your password should be 8 characters long, must contain at least one uppercase letter and one number)</p>
+            <label for="psw-repeat"><b class="user3">Confirm Password</b></label>
+            <input type="password" placeholder="Confirm Password" name="password2" id="psw-repeat" required>
+          
+            <hr>
+            <h3>Choose Your Creative Field</h3>
+            <p>To select subcategories under each heading, you must also select the heading. Example: If you select Painting under ARTS, you must select ARTS and then proceed with the subcategories.</p>
+            <section class="main">    
+              <section class="left">
+                
+                <section class="right">
+                  <!--<style>-->
+                  <!--  .dropbtn {-->
+                  <!--    background-color: #ffffff;-->
+                  <!--    color: rgb(6, 6, 6);-->
+                  <!--    padding: 10px;-->
+                  <!--    font-size: 16px;-->
+                  <!--    border: none;-->
+                  <!--  }-->
+                    
+                  <!--  .dropdown {-->
+                  <!--    position: relative;-->
+                  <!--    display: inline-block;-->
+                  <!--  }-->
+                    
+                  <!--  .dropdown-content {-->
+                  <!--    display: none;-->
+                  <!--    position: absolute;-->
+                  <!--    background-color: #f1f1f1;-->
+                  <!--    min-width: 160px;-->
+                  <!--    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);-->
+                  <!--    z-index: 1;-->
+                  <!--  }-->
+                    
+                  <!--  .dropdown-content a {-->
+                  <!--    color: black;-->
+                  <!--    padding: 12px 16px;-->
+                  <!--    text-decoration: none;-->
+                  <!--    display: block;-->
+                  <!--  }-->
+                    
+                  <!--  .dropdown-content a:hover {background-color: #ddd;}-->
+                    
+                  <!--  .dropdown:hover .dropdown-content {display: block;}-->
+                    
+                  <!--  .dropdown:hover .dropbtn {text-decoration: underline}-->
+
+                  <!--  ol{-->
+                  <!--    list-style-type: none;-->
+                  <!--  }-->
+                    
+                   
+                   
+
+                  <!--  </style>-->
+                  <div class="dropdown">
+                       <input type="checkbox" name="is_heriages" value="heriages">
+                        <label for="is_heriages" style="font-weight: bold;">Heritage</label><br>
+                       
+                    <div class="dropdown-content">
+                      <ol>
+                       
+                        <li>
+                          <input type="checkbox" name="is_artscrafts" value="artscrafts">
+                          <label for="is_artscrafts">Arts Crafts</label><br>
+                        </li>
+                        <li>
+                          <input type="checkbox" name="is_fastival" value="festival">
+                          <label for="is_fastival">Festival</label><br>
+                        </li>
+                        <li>
+                          <input type="checkbox" name="is_celebrations" value="celebrations">
+                          <label for="is_celebrations">Celebrations</label><br>
+                        </li>
+                        <li>
+                          <input type="checkbox" name="is_historical" value="historical">
+                          <label for="is_historical">Historical Monument</label><br>
+                        </li>
+                        <li>
+                          <input type="checkbox" name="is_museums" value="Museums">
+                          <label for="is_museums">Museums</label><br>
+                        </li>
+                        <li>
+                          <input type="checkbox" name="is_libraries" value="libraries">
+                          <label for="is_libraries">libraries</label><br>
+                        </li>
+                        <li>
+                          <input type="checkbox" name="is_archives" value="Archives">
+                          <label for="is_archives">Archives</label><br>
+                        </li>
+                        
+                      </ol>
+                    </div>
+                  </div>
+                  
+                </section>
+              </section>
+              <section class="right">
+                
+                <div class="dropdown">
+                 <input type="checkbox" name="is_arts" value="arts">
+                  <label for="is_arts" style="font-weight: bold;">Arts</label><br>
+                <div class="dropdown-content">
+                <ol>
+                 
+                 
+                  <li>
+                    <input type="checkbox" name="is_painting" value="painting">
+                    <label for="is_painting">Painting</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_digital" value="digital">
+                    <label for="is_digital">Digital Art</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_photography" value="photography">
+                    <label for="is_photography">Photography</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_sculpture" value="sculpture">
+                    <label for="is_sculpture">Sculpture</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_pottery" value="pottery">
+                    <label for="is_pottery">Pottery</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_livemusic" value="livemusic">
+                    <label for="is_livemusic">Music</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_theater" value="theater">
+                    <label for="is_theater">Theater</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_dance" value="dance">
+                    <label for="is_dance">Dance</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_opera" value="opera">
+                    <label for="is_opera">Opera</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_puppetry" value="puppetry">
+                    <label for="is_puppetry">Puppetry</label><br>
+                  </li>
+
+                  
+                </ol>
+              </div>
+            </div>
+              </section>
+              <section class="left">
+                
+                <div class="dropdown">
+                   <input type="checkbox" name="is_media" value="media">
+                    <label for="is_media" style="font-weight: bold;">Media</label><br>
+                <div class="dropdown-content">
+                <ol>
+                
+                  <li>
+                    <input type="checkbox" name="is_book" value="book">
+                    <label for="is_book">Books</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_magazines" value="magazines">
+                    <label for="is_magazines">Magazines</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_comics" value="comics">
+                    <label for="is_comics">Comics</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_film" value="film">
+                    <label for="is_film">Film</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_television" value="television">
+                    <label for="is_television">Television</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_radio" value="radio">
+                    <label for="is_radio">Radio</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_musicvideo" value="musicvideo">
+                    <label for="is_musicvideo">Music video</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_digitalcontent" value="digitalcontent">
+                    <label for="is_digitalcontent">Digital Content</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_software" value="software">
+                    <label for="is_software">Software</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_videogames" value="videogames">
+                    <label for="is_videogames">Video games</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_animations" value="animations">
+                    <label for="is_animations">Animations</label><br>
+                  </li>
+                </ol>
+              </div>
+            </div>
+              </section>
+              <section class="right">
+        
+                <div class="dropdown">
+                  <input type="checkbox" name="is_creation" value="creation">
+                    <label for="is_creation" style="font-weight: bold;">Functional Creations</label><br>
+                  <div class="dropdown-content">
+                <ol>
+                 
+                  <li>
+                    <input type="checkbox" name="is_fashion" value="fashion">
+                    <label for="is_fashion">Fashion</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_jewellery" value="jewellery">
+                    <label for="is_jewellery">Jewellery</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_toys" value="toys">
+                    <label for="is_toys">Toys</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_interiordesign" value="interiordesign">
+                    <label for="is_interiordesign">Interior Design</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_graphics" value="graphics">
+                    <label for="is_graphics">Graphics</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_architecture" value="architecture">
+                    <label for="is_architecture">Architecture</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_advertising" value="advertising">
+                    <label for="is_advertising">Advertising</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_creativerd" value="creativerd">
+                    <label for="is_creativerd">Creative R&D</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_creativeeventservices" value="creative event services">
+                    <label for="is_creativeeventservices">Creative Event Services</label><br>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="is_digitalservices" value="digitalservices">
+                    <label for="is_digitalservices">Digital Services</label><br>
+                  </li>
+                  
+                </ol>
+              </div>
+            </div>
+              </section>
+            </section>
+            
+            <p>By creating an account you agree to our <a href="{% url 'policy'%}">Terms of Use & Privacy Policy</a>.</p>
+        
+            <button type="submit" class="registerbtn">Sign Up</button>
+            <!-- <button type="submit" class="registerbtn1">Facebook</button>
+            <button type="submit" class="registerbtn2">Google</button> -->
+          </div>
+          <div class="container signin">
+              <p>Already have an account?  <a href="{% url 'login' %}">
+        <span  style="
+         background-color: #E40E7F;
+        border-radius: 15px;
+        color: white;
+        padding: 10px 10px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: auto;
+        opacity: 0.9;
+        
+        ">Sign In</span></a>.</p>
+          </div>
+          </div>
+        </form>
+</body>
+{%endblock%}

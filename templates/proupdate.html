@@ -1,0 +1,195 @@
+{% extends 'main/base.html'%}
+{% block content%} 
+{% load static %}   
+    <!--<form  method="post" enctype="multipart/form-data" >-->
+    <!--    {% csrf_token %}-->
+    <!--    {{form.as_p}}-->
+    <!--    {{form.Bio}}-->
+    <!--    <input type="submit" value="Submit" class=""><br>-->
+    <!--    <a href="{% url 'profile'%}">back</a>-->
+    <!--</form>-->
+    
+    
+    <form action="" method="POST" enctype="multipart/form-data" >
+      {% csrf_token %}
+      
+      <div class="container">
+        <div class=" text-center mt-5 ">
+    
+            <h1 >Edit Profile</h1>
+                
+            
+        </div>
+    
+  
+   
+    <div class="row ">
+      <div class="col-lg-7 mx-auto">
+        <div class="card mt-2 mx-auto p-4 bg-light">
+            <div class="card-body bg-light">
+       
+            <div class = "container">
+                             
+    
+            <div class="controls">
+    
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_name">Name *</label><br>
+                           
+                             {{form.name}}
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_lastname">Upload Profile Picture</label>
+                           
+                            {{form.pubprofile}}
+                            
+                          </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="form_name">Bio</label><br>
+                            
+                                {{form.bio}}
+                        
+                        </div>
+                        
+                    </div>
+                  
+                </div>
+                
+                  <div class="row">
+                 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-group">
+                             <label for="form_email">Profile Type *</label><br>
+          
+                    
+                               {{form.profile_type}}
+                            
+                          </div>
+
+                    </div>
+                </div>
+                
+              
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_email">Email </label><br>
+                           
+                            {{form.mail}}
+                            <label for="form_email">Show </label>
+                             {{form.is_show_mail}}
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_email">Phone Number </label><br>
+                           
+                            {{form.phone}}
+                            <label for="phone">Show </label>
+                            {{form.is_show}}
+                           
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="form_email">Gender *</label><br>
+                     
+                          {{form.gender}}
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="form_email">Location *</label>
+            
+                         {{form.pudDzongkhag}}
+                      </div>
+                  </div>
+                
+                
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="form_email">Marital status *</label><br>
+                    
+                       {{form.pubmarital_status}}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="form_email">Employment Status *</label>
+            
+                           {{form.pubemployment_status}}
+                        
+                    </div>
+                </div>
+            </div>
+   
+             <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_name">Facebook </label><br>
+                            {{form.facebook}}
+                       
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_lastname">Instagram </label><br>
+                            {{form.instagram}}
+                           
+                            
+                          </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_name">Youtube </label><br>
+                            {{form.youtube}}
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+          <br><br><br>    
+          <input type="submit" class="btn  btn-send  pt-1 btn-block
+          " value="Save Changes" style="background-color:#e40e7f; color: white;">
+        </div><br>
+          <a style="text-align:center;" href="{% url 'profile'%}">Cancel</a>
+        </div>
+         </div>
+    
+        
+        </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    
+    
+  </form>
+    
+{%endblock%}

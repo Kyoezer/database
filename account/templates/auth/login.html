@@ -1,0 +1,126 @@
+{% extends 'main/base.html'%}
+{% block content%} 
+{% load static %}  
+<body>
+   
+    <style>
+      
+      input[type=text], input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+      }
+      
+      input[type=text]:focus, input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+      }
+      
+      /* Overwrite default styles of hr */
+      hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+      }
+      
+      /* Set a style for the submit button */
+      .registerbtn {
+        background-color: #E40E7F;
+        border-radius: 15px;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+      }
+      .registerbtn0 {
+        background-color: #E40E7F;
+        border-radius: 15px;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+      }
+      
+      .registerbtn:hover {
+        opacity: 1;
+      }
+      
+      /* Add a blue text color to links */
+      a {
+        color: dodgerblue;
+      }
+      
+      /* Set a grey background color and center the text of the "sign in" section */
+      .signin {
+        background-color: #f1f1f1;
+        text-align: center;
+      }
+      
+      .user{
+        margin-right: 300px;
+      }
+      .user1{
+        margin-right: 270px;
+      }
+      </style>
+    <!--   {% for message in messages %}-->
+          
+         
+    <!--      <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">-->
+    <!--            {{message}}-->
+    <!--        <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+    <!--          <span aria-hidden="true">&times;</span>-->
+    <!--        </button>-->
+    <!--      </div>-->
+    <!--{% endfor %}-->
+  <form action="" method="post">
+  {% csrf_token %}
+ 
+      <div class="col-md-4 mx-auto align-items-center" style="padding: 10px; text-align: justify;">
+        <h3>Sign In</h3>
+         {% if messages %}
+            {% for message in messages %}
+            <div class="help">
+                <p><span style="font-size: 20px">&#9888;</span> {{message}}</p>
+            </div>
+            {% endfor %}
+            {% endif %}
+        
+        <hr>
+        <label for="email"><b class="user">Email</b>{% if email_error %}<span>{{ email_error }}</span>{% endif %}</label>
+        <input type="text" placeholder="Enter Email"  id="id_email" name="email" required>
+        <label for="psw"><b class="user1">Password</b>{% if email_error %}<span>{{ email_error }}</span>{% endif %}</label>
+        <input type="password" placeholder="Enter Password" id="id_password" name="password" required>
+        <hr>
+        <button type="submit" class="registerbtn">Sign In</button>
+      </div>
+      <div class="container signin">
+        <a href=" {% url 'password_reset' %}">Forgot Password?</a>
+        <p>Create New Account? <a href="{% url 'signup'%}">
+        <span  style="
+         background-color: #E40E7F;
+        border-radius: 15px;
+        color: white;
+        padding: 10px 10px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: auto;
+        opacity: 0.9;
+        
+        ">Register</span></a>.</p>
+      </div>
+    </form>
+  </form>
+  </div>
+  </div>
+</body>
+{%endblock%}

@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     
+    
+    <td>{{addevent.title}}</td><br>
+    {% if addevent.is_show_mail %}
+     <td>{{addevent.mail}}</td><br>
+       {% else %}
+            <h4> Email: Private</h4>        
+     {% endif %}
+     {% if addevent.is_show %}
+       <h3>{{ev.phone}}<h3>
+       {% else %}
+            <h4> Phone: Private</h4>        
+     {% endif %} 
+
+     <td>{{addevent.Dzongkhag}}</td><br>
+     <td>{{addevent.medium}}</td><br>
+     <td>{{ev.discription}}</td><br>
+     <td>Available:{% if addevent.available %} Yes {% else %} No{% endif %}</td><br>
+     <td>{{addevent.image}}</td><br>
+     <a href="{% url 'contact'%}">contact</a>
+     <br><br>
+     
+    
+       
+     
+   
+   
+              
+</body>
+</html>

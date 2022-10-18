@@ -1,0 +1,312 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+   
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Creative Bhutan</title>
+	<meta name="description" content="Design By OpTech">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+
+	<!-- STYLES -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"  type="text/css" media="all">
+	<link rel="stylesheet" href="{% static 'css/all.min.css' %}" type="text/css" media="all">
+	<link rel="stylesheet" href="{% static 'css/slick.css' %}" type="text/css" media="all">
+	<link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}" type="text/css" media="all">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all">
+
+	
+<style>
+     .marked{
+            color: #e40e7f;
+            font-size: 20px;
+        }
+	.section-title{
+		font-size: 22px;
+	}
+	.marked{
+		font-size: 22px;
+	}
+@media (min-width: 320px) {
+	.section-title{
+		font-size: 18px;
+	}
+	.marked{
+		font-size: 18px;
+	}
+  }
+  
+ @media (min-width: 500px) {
+	.section-title{
+		font-size: 28px;
+	}
+	.marked{
+		font-size: 28px;
+	}
+  }
+</style>
+</head>
+
+<body>
+
+<!-- site wrapper -->
+<div class="site-wrapper">
+
+	<div class="main-overlay"></div>
+
+	<!-- header -->
+	<header class="header-default">
+		<nav class="navbar navbar-expand-lg">
+			<div class="container-xl">
+
+   <a href="{% url 'index' %}"><h5 class="section-title" >Creative<span class="marked" >Bhutan</span></h5></a> 
+                    
+              
+
+				<div class="collapse navbar-collapse">
+					<!-- menus -->
+					<ul class="navbar-nav mr-auto">
+						
+                            {% if user.is_approved %}
+                            
+                            <li class="nav-item" id="recent-tab">
+                                <a class="nav-link" href="{% url 'approved'%}" >Dashboard</a>
+                            </li>
+                             <li class="nav-item" id="recent-tab">
+                                <a class="nav-link" href="{% url 'logout'%}" >logout</a>
+                            </li>
+                        
+                           {% else %} 
+                           <li class="nav-item">
+                           <!-- <a class="nav-link" href="{% url 'signup'%}">Sign Up</a>-->
+                           <!--</li>-->
+                           <li class="nav-item active" id="popular-tab">
+                            <a  class="nav-link " href="{% url 'login'%}" >Sign In</a>
+                           </li>
+                        
+                           {% endif %}
+						</li>
+                      
+					</ul>
+				</div>
+
+				<!-- header right section -->
+				<div class="header-right">
+					<!-- social icons -->
+					<ul class="social-icons list-unstyled list-inline mb-0">
+						<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+						
+						<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+					
+						<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+					</ul>
+					<!-- header buttons -->
+					<div class="header-buttons">
+						<button class="search icon-button">
+							<i class="icon-magnifier"></i>
+						</button>
+						<button class="burger-menu icon-button">
+							<span class="burger-icon"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+
+  {% block content%}
+  {%endblock%}
+<!-- .page-section -->
+<footer class="page-footer">
+    <div class="container">
+      <div class="row justify-content-center mb-5" style="background-color: rgb(247, 247, 247);">
+        <div class="col-lg-4 ">
+        {% for x in logo_image %}
+        
+        {% if x.logo %}
+        <div class="image" style="width:100px; height: auto; background-color: transparent; margin-top: -30px;"><img src="{{x.logo.url}}" alt="image"></div>
+        {% endif %} 
+
+        {%endfor%} 
+          <h3 class="section-title">Creative<span class="marked">Bhutan</span></h3>
+          {% for x in op %}
+          {% if x.operate %}
+          <p>
+            {{x.operate}}
+          </p>
+          {% endif %}
+          {%endfor%} 
+        </div>
+        <div class="col-lg-4 align-items-center">
+          <h5>Quick Links</h5>
+          <ul class="footer-menu">
+            <li style="color: gray;"><a style="color: gray;" href="https://www.doim.gov.bt/">Department of Information and Media</a></li>
+            <li style="color: gray;"><a style="color: gray;" href="https://www.moic.gov.bt/en/">Ministry of Information and Communications</a></li>
+        
+            <li style="color: gray;"><a style="color: gray;" href="https://www.nfc.gov.bt/">National Film Commission</a></li>
+            <li style="color: gray;"><a  style="color: gray;" href="https://www.moea.gov.bt/">Ministry of Economic Affairs</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 align-items-end">
+          <h5></h5>
+          <ul class="footer-menu">
+            
+            <li style="color: gray;"><a style="color: gray;" href="{% url 'terms'%}">Terms of Use</a></li>
+            <li style="color: gray;"><a style="color: gray;" href="{% url 'policy'%}">Privacy Policy</a></li>
+        
+           
+          </ul>
+        </div>
+        
+      </div>
+
+      <div class="row">
+        <!--<div class="col-sm-6 py-2">-->
+        <!--  {% for x in co %}-->
+        <!--  {% if x.copy %}-->
+        <!--  <p id="copyright">&copy; {{x.copy}} <a href="">MOIC. DoIM</a>. All rights reserved</p>-->
+        <!--  {% endif %}-->
+        <!--  {%endfor%} -->
+        <!--</div>-->
+        
+      </div>
+    </div> <!-- .container -->
+  </footer> <!-- .page-footer -->
+    <!-- footer -->
+	<footer>
+		<div class="container-xl">
+			<div class="footer-inner">
+				<div class="row d-flex align-items-center gy-4">
+					<!-- copyright text -->
+					<div class="col-md-4">
+					    {% for x in co %}
+          {% if x.copy %}
+          <p id="copyright">&copy; {{x.copy}} MoIC.All rights reserved <br><a href="https://optech.bt/"> Developed by OpTech.</a></p>
+          {% endif %}
+          {%endfor%}
+					
+					</div>
+
+					<!-- social icons -->
+					<div class="col-md-4 text-center">
+						<ul class="social-icons list-unstyled list-inline mb-0">
+							<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+							
+							<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+						
+						</ul>
+						<p>Beta Version</p>
+					</div>
+
+					<!-- go to top button -->
+					<div class="col-md-4">
+						<a href="#" id="return-to-top" class="float-md-end"><i class="icon-arrow-up"></i>Back to Top</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</div><!-- end site wrapper -->
+
+<!-- search popup area -->
+<div class="search-popup">
+	<!-- close button -->
+	<button type="button" class="btn-close" aria-label="Close"></button>
+	<!-- content -->
+	<div class="search-content">
+		<div class="text-center">
+			<h3 class="mb-4 mt-0">Press ESC to close</h3>
+		</div>
+		<!-- form -->
+		<form class="d-flex search-form" method= "get" action="{%url 'search'%}">
+			
+			<input class="form-control me-2" name="searched" id="searched" type="search" placeholder="Search and press enter ..." aria-label="Search">
+			<button class="btn btn-default btn-lg" type="submit"><i class="icon-magnifier"></i></button>
+		</form>
+	</div>
+</div>
+
+<!-- canvas menu -->
+<div class="canvas-menu d-flex align-items-end flex-column">
+	<!-- close button -->
+	<button type="button" class="btn-close" aria-label="Close"></button>
+
+	<!-- logo -->
+	<div class="logo">
+			<a href="{%url 'index'%}"><h3 class="section-title">Creative<span class="marked">Bhutan</span></h3></a>
+	</div>
+
+	<!-- menu -->
+	<nav>
+		<ul class="vertical-menu">
+			<!--<li class="active">-->
+			<!--	<a href="{%url 'index'%}">Home</a>-->
+			
+			<!--</li>-->
+			<li class="active">
+				{% if user.is_approved %}
+			  <li class="nav-item">
+				<a class="nav-link" href="{% url 'approved'%}" >Dashboard</a>
+			  </li>
+			   <li class="nav-item" id="recent-tab">
+                                <a class="nav-link" href="{% url 'logout'%}" >logout</a>
+               </li>
+		
+		      {% else %} 
+		    <!--  <li class="nav-item">-->
+			   <!--<a class="nav-link" href="{% url 'signup'%}">Sign Up</a>-->
+		    <!--  </li>-->
+		      <li class="nav-item active">
+			   <a  class="nav-link "href="{% url 'login'%}" >Sign In</a>
+			   {%endif%}
+		   </li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'artstype'%}">Artist Profile</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'showevent'%}">Events</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'industries'%}">Posts</a>
+			</li>
+			
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'stat'%}">Statistics</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'contactadmin'%}">Contact Us</a>
+			</li>
+			
+		</ul>
+	</nav>
+
+	<!-- social icons -->
+	<ul class="social-icons list-unstyled list-inline mb-0 mt-auto w-100">
+		<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+
+		<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+		<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+		
+	</ul>
+</div>
+<!-- JAVA SCRIPTS -->
+<script src=" {% static 'js/jquery.min.js'  %}"></script>
+<script src=" {% static 'js/popper.min.js'  %}"></script>
+<script src=" {% static 'js/bootstrap.min.js' %}"></script>
+<script src=" {% static 'js/slick.min.js'  %}"></script>
+<script src=" {% static 'js/jquery.sticky-sidebar.min.js'  %}"></script>
+<script src=" {% static 'js/custom.js' %}"></script>
+
+</body>
+
+
+</html>
+

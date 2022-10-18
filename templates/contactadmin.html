@@ -1,0 +1,41 @@
+
+
+   {% extends 'main/base.html'%}
+   {% block content%} 
+   {% load static %} 
+       
+   
+    <div class="page-section">
+      <div class="container">
+        <div class="row align-items-center">
+          
+           
+          <div class="col-md-4 mx-auto align-items-center" style="padding: 10px; text-align: justify; background-color: rgb(244, 244, 244);">
+            
+            <h2 class="title-section">Contact Us</h2>
+            <div class="divider"></div>
+            
+            <form action="#" method="post">
+            {% csrf_token %}
+              <div class="py-2">
+                <input type="text" name="name" class="form-control" placeholder="Full name">
+              </div>
+              <div class="py-2">
+                <input type="email" name="email" class="form-control" placeholder="Email">
+              </div>
+              <div class="py-2">
+                <input type="number" name="phone" class="form-control" placeholder="Phone Number">
+              </div>
+              <div class="py-2">
+                <textarea rows="6" name="discription" class="form-control" placeholder="Enter message"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary rounded-pill mt-4" style="background-color:#e40e7f; color: white; width: 100%;">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div> <!-- .container -->
+    </div> <!-- .page-section -->
+  
+   
+
+{%endblock%}
